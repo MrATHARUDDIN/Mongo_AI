@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Mostra i dettagli del cliente CIK D.D.",
+    "mongo_query": {
+      "customerName": "CIK D.D."
+    }
+  },
+  {
+    "question": "Trova tutti i distributori in Croazia",
+    "mongo_query": {
+      "countryName": "CROATIA",
+      "customerType": "DISTRIBUTORE"
+    }
+  },
+  {
+    "question": "Mostrami i clienti top con un punteggio di rischio maggiore di 50",
+    "mongo_query": {
+      "customerCluster": "TOP_CUSTOMER",
+      "riskScore": { "$gt": 50 }
+    }
+  },
+  {
+    "question": "Trova i clienti assegnati all'agente SANDA KRISTICEVIC",
+    "mongo_query": {
+      "agentFirstLevelName": "SANDA KRISTICEVIC"
+    }
+  },
+  {
+    "question": "Elenca i clienti che hanno avvisi commerciali per residui aperti",
+    "mongo_query": {
+      "commercialWarning": "OPEN_RESIDUALS"
+    }
+  },
+  {
+    "question": "Calcola il totale delle vendite negli ultimi 12 mesi divisi per paese",
+    "mongo_query": [
+      {
+        "$group": {
+          "_id": "$countryName",
+          "totalSales12m": { "$sum": "$customerSalesValue12m" }
+        }
+      },
+      { "$sort": { "totalSales12m": -1 } }
+    ]
+  }
+]

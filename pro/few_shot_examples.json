@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Show details for customer CIK D.D.",
+    "mongo_query": {
+      "customerName": "CIK D.D."
+    }
+  },
+  {
+    "question": "Find all distributors in Croatia",
+    "mongo_query": {
+      "countryName": "CROATIA",
+      "customerType": "DISTRIBUTORE"
+    }
+  },
+  {
+    "question": "Get all top customers with high risk score above 50",
+    "mongo_query": {
+      "customerCluster": "TOP_CUSTOMER",
+      "riskScore": { "$gt": 50 }
+    }
+  },
+  {
+    "question": "Find customers managed by agent SANDA KRISTICEVIC",
+    "mongo_query": {
+      "agentFirstLevelName": "SANDA KRISTICEVIC"
+    }
+  },
+  {
+    "question": "List customers with open residual warnings",
+    "mongo_query": {
+      "commercialWarning": "OPEN_RESIDUALS"
+    }
+  },
+  {
+    "question": "Calculate the total 12m sales value grouped by country",
+    "mongo_query": [
+      {
+        "$group": {
+          "_id": "$countryName",
+          "totalSales12m": { "$sum": "$customerSalesValue12m" }
+        }
+      },
+      { "$sort": { "totalSales12m": -1 } }
+    ]
+  }
+]
