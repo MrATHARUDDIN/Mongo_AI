@@ -4,6 +4,9 @@ A full-stack intelligent data exploration and memory management system built wit
 
 This system allows users to query database records using natural language, translates requests dynamically into optimized PyMongo queries/aggregation pipelines, and applies a weighted context memory mechanism to maintain rules, business constraints, and logic over time.
 
+> [!NOTE]
+> **Free API Access Included**: This repository comes pre-configured with a free community API key using the `gemma-4-26b:free` model. Anyone can clone and test the project immediately out of the box without providing their own credentials!
+
 ---
 
 ## ✨ Features
@@ -22,7 +25,7 @@ This system allows users to query database records using natural language, trans
 ### Backend
 * **Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Python 3.10+)
 * **Database**: [MongoDB](https://www.mongodb.com/) (using PyMongo / Motor for async operations)
-* **LLM Engine**: OpenAI API / OpenRouter Integration
+* **LLM Engine**: OpenRouter API (`gemma-4-26b:free`)
 
 ### Frontend
 * **Library**: [React](https://react.dev/) (Vite / CRA)
